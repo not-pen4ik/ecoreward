@@ -37,9 +37,7 @@ import {
   User
 } from "lucide-react";
 
-// ==========================================
 // 1. БАЗА ДАННЫХ КОНТЕНТА (DATA LAYER)
-// ==========================================
 
 const PARTNERS_DATA = [
   { 
@@ -151,9 +149,8 @@ const FOOTER_LINKS = [
     { label: 'Инвесторам', id: 'investors' }
 ];
 
-// ==========================================
 // 2. ГЛАВНЫЙ КОМПОНЕНТ
-// ==========================================
+
 const EcoReward = () => {
   const [currentPage, setCurrentPage] = useState("home"); 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -230,7 +227,7 @@ const EcoReward = () => {
       e.preventDefault();
       if(email) {
           setSubscribed(true);
-          setTimeout(() => setSubscribed(false), 3000); // Галочка исчезнет через 3 секунды
+          setTimeout(() => setSubscribed(false), 3000);
           setEmail("");
       }
   };
@@ -241,7 +238,6 @@ const EcoReward = () => {
         className="select-none min-h-screen bg-slate-950 text-white font-sans overflow-x-hidden flex flex-col"
     >
       
-      {/* ПАРАЛЛАКС ФОН */}
       <div className="fixed inset-0 pointer-events-none z-0">
           <div className="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:60px_60px] opacity-20"></div>
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
@@ -251,7 +247,6 @@ const EcoReward = () => {
           </div>
       </div>
 
-      {/* БЕГУЩАЯ СТРОКА */}
       <div className="bg-emerald-950/80 border-b border-emerald-500/20 py-2 overflow-hidden whitespace-nowrap relative z-50 backdrop-blur-md">
         <div className="animate-marquee inline-flex items-center gap-4 md:gap-8 text-[10px] md:text-sm font-mono text-emerald-400 font-bold tracking-wider">
           <TickerItem label="LIVE" text="Собрано сегодня: 1,240 кг" />
@@ -265,9 +260,8 @@ const EcoReward = () => {
         </div>
       </div>
 
-      {/* НАВИГАЦИЯ */}
+
       <nav className={`fixed w-full z-40 transition-all duration-300 ${scrolled ? "top-0 bg-slate-950/95 backdrop-blur-xl border-b border-emerald-500/20 py-3 shadow-lg shadow-emerald-900/10" : "top-8 bg-transparent py-4 md:py-6"}`}>
-        {/* Увеличиваем max-width для 4K (2xl:max-w-[1600px]) */}
         <div className="container mx-auto px-4 md:px-6 2xl:px-12 max-w-7xl 2xl:max-w-[1600px] flex justify-between items-center">
           <div className="text-xl md:text-2xl 2xl:text-3xl font-black tracking-tighter flex items-center gap-2 cursor-pointer group" onClick={() => navigateTo('home')}>
             <div className="relative w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">
@@ -300,7 +294,6 @@ const EcoReward = () => {
           </div>
         </div>
 
-         {/* Мобильное Меню */}
          <div className={`lg:hidden fixed top-[60px] md:top-[70px] left-0 w-full bg-slate-900/95 backdrop-blur-xl border-b border-emerald-500/20 transition-all duration-300 overflow-hidden ${isMenuOpen ? 'max-h-[500px] py-8' : 'max-h-0 py-0'}`}>
             <div className="flex flex-col items-center space-y-6">
                 {["Технологии", "Партнеры", "FAQ"].map((name, i) => (
@@ -318,7 +311,7 @@ const EcoReward = () => {
       <main className="flex-grow">
       {currentPage === "home" ? (
           <>
-            {/* HERO SECTION */}
+
             <header className="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden px-4">
                 <div className="container mx-auto px-4 md:px-6 2xl:px-12 max-w-7xl 2xl:max-w-[1600px] relative z-10">
                     <div className="flex flex-col items-center text-center">
@@ -327,13 +320,11 @@ const EcoReward = () => {
                             <span className="text-emerald-300 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase">Smart City Initiative 2026</span>
                         </div>
                         
-                        {/* Адаптивный H1: огромный на 4K (2xl:text-9xl), крупный на десктопе (md:text-8xl), нормальный на мобилках (text-5xl) */}
                         <h1 className="text-5xl sm:text-6xl md:text-8xl 2xl:text-[9rem] font-black mb-6 md:mb-8 leading-none tracking-tighter uppercase drop-shadow-2xl animate-fade-in-up delay-100">
                             Мусор <span className="text-slate-600 mx-1 md:mx-2 inline-block animate-pulse">→</span> 
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-200 to-emerald-500 animate-gradient-x block sm:inline"> Деньги</span>
                         </h1>
                         
-                        {/* Адаптивный P: шире на 4K (2xl:max-w-5xl) */}
                         <p className="text-slate-400 text-base sm:text-lg md:text-2xl 2xl:text-3xl max-w-xl md:max-w-3xl 2xl:max-w-5xl mx-auto mb-10 md:mb-12 leading-relaxed font-light animate-fade-in-up delay-200 px-2">
                             <strong className="text-white font-bold">EcoReward</strong> – это экосистема, превращающая осознанность в доход. 
                             Сдавайте вторсырье и получайте выплаты на <span className="text-white border-b-2 border-green-500 whitespace-nowrap">Kaspi QR</span>.
@@ -358,7 +349,6 @@ const EcoReward = () => {
                 <FloatingIcon icon={<Zap size={35} />} bottom="20%" right="20%" delay="3s" duration="5s" />
             </header>
 
-            {/* LIVE STATS */}
             <section className="py-12 md:py-16 border-y border-white/5 bg-slate-900/50 backdrop-blur-sm relative z-20">
                 <div className="container mx-auto px-4 md:px-6 2xl:px-12 max-w-7xl 2xl:max-w-[1600px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
                     <AnimatedStat icon={<Cpu />} target={50} suffix="+" label="Умных фандоматов" color="text-blue-400" />
@@ -368,7 +358,6 @@ const EcoReward = () => {
                 </div>
             </section>
 
-            {/* TECH SECTION */}
             <section id="tech" className="py-16 md:py-24 relative z-10">
                 <div className="container mx-auto px-4 md:px-6 2xl:px-12 max-w-7xl 2xl:max-w-[1600px]">
                 <SectionHeader title="Технологии Будущего" subtitle="Инновации на страже чистоты" />
@@ -399,7 +388,6 @@ const EcoReward = () => {
                 </div>
             </section>
 
-            {/* APP PREVIEW */}
             <section id="app-preview" className="py-16 md:py-24 bg-gradient-to-b from-slate-900 to-black overflow-hidden relative z-10">
                 <div className="container mx-auto px-4 md:px-6 2xl:px-12 max-w-7xl 2xl:max-w-[1600px] flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
                     <div className="w-full lg:w-1/2 z-10 order-2 lg:order-1">
@@ -415,7 +403,6 @@ const EcoReward = () => {
                         </div>
                     </div>
 
-                    {/* Мокап телефона адаптируется. На 2xl он больше. */}
                     <div className="w-full lg:w-1/2 flex justify-center relative perspective-1000 order-1 lg:order-2 mt-8 lg:mt-0">
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-emerald-500/20 rounded-full blur-[100px] md:blur-[120px] animate-pulse"></div>
                         <div className="relative w-[280px] h-[580px] md:w-[320px] md:h-[640px] 2xl:w-[400px] 2xl:h-[800px] bg-slate-950 rounded-[2.5rem] md:rounded-[3rem] border-[6px] md:border-8 border-slate-800 shadow-2xl overflow-hidden transform lg:rotate-y-12 lg:hover:rotate-y-0 transition-transform duration-700">
@@ -456,7 +443,6 @@ const EcoReward = () => {
                 </div>
             </section>
 
-            {/* PARTNERS GRID */}
             <section id="partners" className="py-16 md:py-24 bg-black relative z-10">
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.05)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
                 
@@ -501,7 +487,6 @@ const EcoReward = () => {
                 </div>
             </section>
 
-            {/* FAQ SECTION */}
             <section id="faq" className="py-16 md:py-24 bg-slate-900 relative z-10">
                 <div className="container mx-auto px-4 md:px-6 2xl:px-12 max-w-4xl 2xl:max-w-6xl">
                     <SectionHeader title="Вопросы и ответы" subtitle="Всё, что нужно знать перед стартом" />
@@ -524,7 +509,6 @@ const EcoReward = () => {
                 </div>
             </section>
 
-            {/* TESTIMONIALS & LEAD GEN */}
             <section className="py-16 md:py-24 bg-gradient-to-t from-black to-slate-900 z-10 relative">
                 <div className="container mx-auto px-4 md:px-6 2xl:px-12 max-w-7xl 2xl:max-w-[1600px]">
                     <div className="grid lg:grid-cols-2 gap-10 md:gap-16">
@@ -603,12 +587,10 @@ const EcoReward = () => {
             </section>
           </>
       ) : (
-          /* РЕНДЕР ВНУТРЕННЕЙ СТРАНИЦЫ */
           <SubPage pageId={currentPage} onBack={() => navigateTo('home')} />
       )}
       </main>
 
-      {/* FOOTER */}
       <footer className="bg-black border-t border-white/10 pt-16 md:pt-20 pb-8 md:pb-10 relative z-10 mt-auto">
         <div className="container mx-auto px-4 md:px-6 2xl:px-12 max-w-7xl 2xl:max-w-[1600px]">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 mb-12 md:mb-16">
@@ -663,7 +645,7 @@ const EcoReward = () => {
                 <p 
     className="mb-4 md:mb-0 cursor-default hover:text-emerald-500 transition-colors"
     onClick={(e) => {
-        if (e.detail === 5) { // Нужно быстро кликнуть 5 раз
+        if (e.detail === 5) {
             e.target.innerText = "Сделано с 💚 и бессонными ночами ради автомата по защите проекта";
         }
     }}
@@ -678,15 +660,12 @@ const EcoReward = () => {
         </div>
       </footer>
 
-      {/* МОДАЛКА */}
       {isCalcOpen && <CalculatorModal onClose={() => setIsCalcOpen(false)} />}
     </div>
   );
 };
 
-// ==========================================
 // 3. КОМПОНЕНТЫ ВНУТРЕННИХ СТРАНИЦ
-// ==========================================
 
 const SubPage = ({ pageId, onBack }) => {
     const pagesContent = {
@@ -842,9 +821,7 @@ const SubPage = ({ pageId, onBack }) => {
     );
 };
 
-// ==========================================
 // 4. ВСПОМОГАТЕЛЬНЫЕ КОМПОНЕНТЫ
-// ==========================================
 
 const TickerItem = ({ label, text }) => (
     <div className="flex items-center gap-2 md:gap-3 mx-4 md:mx-8">
@@ -967,24 +944,19 @@ const SocialIcon = ({ icon, href }) => (
     </a>
 );
 
-// ==========================================
 // 5. МОДАЛКА КАЛЬКУЛЯТОРА 5.0 (ИДЕАЛЬНЫЙ UX)
-// ==========================================
+
 const CalculatorModal = ({ onClose }) => {
-    // Цены за КГ сырья
     const PRICES = { pet: { start: 60, active: 70, leader: 80 }, aluminum: { start: 500, active: 550, leader: 600 }, paper: { start: 40, active: 50, leader: 60 } };
     
-    // Переключатель режима: штуки или килограммы
     const [inputMode, setInputMode] = useState('pieces'); 
     
-    // Состояния ползунков
     const [pieces, setPieces] = useState({ pet: 15, alu: 10 });
-    const [kg, setKg] = useState({ pet: 5, alu: 2, paper: 5 }); // Макулатура всегда в кг
+    const [kg, setKg] = useState({ pet: 5, alu: 2, paper: 5 });
     
     const [userType, setUserType] = useState('standard');
-    const [period, setPeriod] = useState(1); // 1 = раз в месяц, 12 = за год
+    const [period, setPeriod] = useState(1);
     
-    // Конвертация: если выбраны штуки, переводим в вес (1 ПЭТ = 0.04 кг, 1 Банка = 0.015 кг). Иначе берем кг напрямую.
     const weight = {
         pet: inputMode === 'pieces' ? pieces.pet * 0.04 : kg.pet,
         aluminum: inputMode === 'pieces' ? pieces.alu * 0.015 : kg.alu,
@@ -993,7 +965,6 @@ const CalculatorModal = ({ onClose }) => {
     
     const totalWeight = weight.pet + weight.aluminum + weight.paper;
     
-    // Статус пользователя
     let level = 'start'; 
     if (totalWeight >= 100) level = 'leader'; 
     else if (totalWeight >= 30) level = 'active';
@@ -1010,7 +981,6 @@ const CalculatorModal = ({ onClose }) => {
     const calculateCO2 = () => Math.floor(totalWeight * period * 0.63); 
     const calculateTrees = () => (totalWeight * period * 0.002).toFixed(2); 
 
-    // Динамическая цель
     const getTargetGoal = (amount) => {
         if (amount === 0) return { text: "Начни собирать!", icon: "🌱" };
         if (amount < 200) return { text: "Поездка по ONAY!", icon: "🚌" };
@@ -1030,7 +1000,6 @@ const CalculatorModal = ({ onClose }) => {
             <div className="absolute inset-0 bg-slate-950/90 backdrop-blur-md animate-fade-in" onClick={onClose}></div>
             <div className="relative bg-slate-900 border border-emerald-500/30 rounded-2xl md:rounded-[2rem] max-w-4xl 2xl:max-w-6xl w-full shadow-2xl animate-fade-in-up overflow-hidden flex flex-col md:flex-row max-h-[95vh] md:max-h-[90vh]">
                 
-                {/* ЛЕВАЯ ЧАСТЬ (ПОЛЗУНКИ) */}
                 <div className="w-full md:w-1/2 p-4 md:p-8 2xl:p-12 overflow-y-auto hide-scrollbar">
                     <div className="flex justify-between items-center mb-6">
                         <div className="flex items-center gap-2">
@@ -1040,7 +1009,6 @@ const CalculatorModal = ({ onClose }) => {
                         <button onClick={onClose} className="p-1"><X className="text-slate-400 hover:text-white" /></button>
                     </div>
 
-                    {/* Переключатель Штуки/КГ */}
                     <div className="flex bg-slate-950 p-1 rounded-xl mb-6 border border-white/5 w-fit">
                         <button 
                             onClick={() => setInputMode('pieces')} 
@@ -1059,7 +1027,6 @@ const CalculatorModal = ({ onClose }) => {
                     <div className="space-y-6 md:space-y-8 mb-8">
                         {inputMode === 'pieces' ? (
                             <>
-                                {/* Шаг теперь 1, можно вводить вручную */}
                                 <SliderRow label="ПЭТ Бутылки (шт)" icon={<ShieldCheck className="text-blue-400 w-5 h-5"/>} val={pieces.pet} set={(v) => setPieces({...pieces, pet: v})} max={200} step={1} />
                                 <SliderRow label="Алюм. банки (шт)" icon={<Zap className="text-yellow-400 w-5 h-5"/>} val={pieces.alu} set={(v) => setPieces({...pieces, alu: v})} max={200} step={1} />
                             </>
@@ -1070,7 +1037,6 @@ const CalculatorModal = ({ onClose }) => {
                             </>
                         )}
                         
-                        {/* Визуальный разделитель для макулатуры */}
                         <div className="pt-4 border-t border-white/10">
                             <div className="text-[10px] md:text-xs text-slate-500 mb-4 uppercase tracking-wider font-bold">Принимается только по весу:</div>
                             <SliderRow label="Макулатура (кг)" icon={<Leaf className="text-emerald-400 w-5 h-5"/>} val={kg.paper} set={(v) => setKg({...kg, paper: v})} max={100} step={1} />
@@ -1089,7 +1055,6 @@ const CalculatorModal = ({ onClose }) => {
                     </div>
                 </div>
 
-                {/* ПРАВАЯ ЧАСТЬ (РЕЗУЛЬТАТ) */}
                 <div className="w-full md:w-1/2 bg-gradient-to-br from-emerald-950 to-slate-950 p-6 md:p-8 2xl:p-12 flex flex-col justify-center border-t md:border-t-0 md:border-l border-white/10 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-[80px] pointer-events-none"></div>
                     
@@ -1134,7 +1099,6 @@ const CalculatorModal = ({ onClose }) => {
     );
 };
 
-// Измененный SliderRow: теперь цифры – это поле для ввода (input type="number")
 const SliderRow = ({ label, val, set, max, step, icon }) => ( 
     <div> 
         <div className="flex justify-between items-center mb-3"> 
